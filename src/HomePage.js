@@ -101,7 +101,7 @@ function HomePage() {
               <a
                 id="gitlink"
                 href={projects[projectIndex].gitlink}
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 <img
                   src="/images/GitHub_Logo.png"
@@ -113,7 +113,7 @@ function HomePage() {
               <a
                 id="projectlink"
                 href={projects[projectIndex].link}
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 {projects[projectIndex].link}
               </a>

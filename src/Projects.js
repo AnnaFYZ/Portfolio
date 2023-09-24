@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import projectsData from "./projectsdata.json";
 import { Link } from "react-router-dom";
 
@@ -7,7 +7,7 @@ function Projects() {
     <div>
       <div className="body">
         <header className="main-header">
-          <h1></h1>
+          <div></div>
           <nav>
             <ul>
               <li>
