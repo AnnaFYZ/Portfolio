@@ -30,7 +30,7 @@ function Projects() {
           return (
             <div>
               <h2>{project.h3}</h2>
-              <img src={project.img.src} alt={project.img.alt} />
+              <img className="bigImage"src={project.img.src} alt={project.img.alt} />
               <p>description to be added</p>
             </div>
           );
