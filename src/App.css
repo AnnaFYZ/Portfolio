@@ -125,7 +125,7 @@ a:focus {
 .body > header {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   position: sticky;
   top: 0;
   z-index: 1;
