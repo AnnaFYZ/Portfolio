@@ -1,130 +1,155 @@
-import React, { useState } from "react";
-import projectsData from "./projectsdata.json";
-import { Link } from "react-router-dom";
+import React from "react";
+import Projects from "./Projects";
 
 function HomePage() {
-  const [projectIndex, setProjectIndex] = useState(0);
-  const projects = projectsData; 
-
-  const displayProjects = (increment) => {
-    const newIndex =
-      (projectIndex + increment + projects.length) % projects.length;
-    setProjectIndex(newIndex);
-  };
-
   return (
     <div className="body">
       <header className="main-header">
-        <h1>Anna</h1>
         <nav>
           <ul>
             <li>
-              <Link to="/projects" className="header-link">
-                Projects
-              </Link>
+              <a href="#topOfPage" className="header-link">
+                To the top
+              </a>
             </li>
             <li>
-              <Link to="/contacts" className="header-link">
+              <a href="#projects" className="header-link">
+                Projects
+              </a>
+            </li>
+            <li>
+              <a href="#aboutMe" className="header-link">
+                About Me
+              </a>
+            </li>
+            <li>
+              <a href="#contacts" className="header-link">
                 Contact
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>
       </header>
 
-      <main className="homepage" tabIndex="0">
+      <div id="topOfPage" className="homepage" tabIndex="0">
         <section id="about">
           <header>
-            <h2>About Me</h2>
+            <h2>
+              Hello!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I'm
+              &nbsp;&nbsp;&nbsp;
+              <span id="anna">Anna</span>
+              <br /> and I am happy to greet you here
+            </h2>
           </header>
-          <p>
-            Hi! My name is Anna. I am a persistent introvert who enjoys building
-            and watching things from the beginning.
-          </p>
-          <p>
-            The first language I was introduced to was Pascal at school when no
-            one heard about C# or Phython yet {String.fromCodePoint(0x1f9d0)}
-            however the main principles of if statements are still the same.
-            Unfortunately i was not able to continue my coding path that time.
-          </p>
-          <p>
-            My life path had brought to a point where I learnt about network
-            architecture and loved it so much that decided to become a
-            specialist in cybersecurity. So i entered the university where I
-            learnt about C# and Java but only basics.
-          </p>
-          <p>
-            Unfortunately the war started in my country did not let me to
-            continue the education. I tried to attend online courses but theory
-            without practice is very weak skill.
-          </p>
-          <p>
-            Code Your Future helped me to come back into IT world. I've learnt
-            basics of HTML, CSS and JavaScript but the most important they
-            taught me how to learn further correctly and constantly develope my
-            skills. I still but in 20 years time this world is still magnificent
-            to me and an every solved coding task for me is still as a huge
-            victory which i enjoy every time {String.fromCodePoint(0x1f60a)}.
-          </p>
-          <p>
-            The most significant reward for me is when people like using things
-            that i did.
-          </p>
-        </section>
-        <section id="projects">
-          <header>
-            <h2>Projects Showcase</h2>
-          </header>
-          <p>
-            Here are some of my projects. They may look simple to build but each
-            of them holds a small combat and a victory inside. Victory of making
-            something work in a way the developer wants.
-          </p>
-          <div id="container">
-            <button
-              id="previous"
-              type="button"
-              onClick={() => displayProjects(-1)}
-            >
-              {" "}
-              &lt;&lt;{" "}
-            </button>
-            <div id="project" className="project">
-              <h3 id="title">{projects[projectIndex].h3}</h3>
-              <span id="id">{projects[projectIndex].id}</span>
-              <img
-                id="projectImg"
-                src={projects[projectIndex].img.src}
-                alt={projects[projectIndex].img.alt}
-              />
-              <p id="description">{projects[projectIndex].summary}</p>
-              <a
-                id="gitlink"
-                href={projects[projectIndex].gitlink}
-                target="_blank" rel="noreferrer"
-              >
-                <img
-                  src="/images/GitHub_Logo.png"
-                  width="80px"
-                  alt="GitHub Link"
-                />
-              </a>
-              <br />
-              <a
-                id="projectlink"
-                href={projects[projectIndex].link}
-                target="_blank" rel="noreferrer"
-              >
-                {projects[projectIndex].link}
-              </a>
-            </div>
-            <button id="next" type="button" onClick={() => displayProjects(1)}>
-              {" "}
-              &gt;&gt;{" "}
-            </button>
+          <h4 style={{ margin: "2em 2em 2em 0" }}>I can work with:</h4>
+          <div className="logos">
+            <img
+              className="logoPic"
+              src="./logos/javascript-1.svg"
+              alt="js-logo"
+            />
+            <img
+              className="logoPic"
+              src="./logos/-HPXhG__react.svg"
+              alt="react-logo"
+            />
+            <img
+              className="logoPic"
+              src="./logos/nodejs-2.svg"
+              alt="node-logo"
+            />
+            <img
+              className="logoPic"
+              src="./logos/postgre-sql.svg"
+              alt="sql-logo"
+            />
+            <img
+              className="logoPic"
+              src="./logos/github-original-wordmark.svg"
+              alt="GitHub-logo"
+            />
+            <img
+              className="logoPic"
+              src="./logos/python-vertical.svg"
+              alt="python-logo"
+            />
           </div>
         </section>
-      </main>
+        <section id="greetPic">
+          <div>
+            <img
+              className="greetingPic"
+              src="./images/helloIMG.jpg"
+              alt="i am greeting you"
+            />
+          </div>
+        </section>
+      </div>
+      <div className="line-separator"></div>
+      <div id="projects">
+        <div className="projects">
+          <Projects />
+        </div>
+      </div>
+      <div className="line-separator"></div>
+      <div id="aboutMe" className="about">
+        <section id="mePic">
+          <div>
+            <img
+              className="avatarPic"
+              src="./images/20220730_181925.jpg"
+              alt="pic of me"
+            />
+          </div>
+        </section>
+        <section className="text">
+          <p>
+            I am a determined introvert with a passion for building and
+            witnessing the creation of things from the ground up.
+          </p>
+          <p>
+            Each successfully solved coding task feels like a significant
+            victory that I cherish every time 😊.
+          </p>
+          <p>
+            The ultimate reward for me is when people enjoy using things that
+            I've created.
+          </p>
+        </section>
+      </div>
+      <div className="line-separator"></div>
+      <div id="contacts">
+        <div className="contactHeader">
+          <h2>
+            You'll make me happy if you contact me even just to say 'Hello' or give your
+            feedback
+          </h2>
+        </div>
+        <form
+          method="post"
+          action="https://getform.io/f/63f551d4-c8ee-4512-947c-6bac09a8a707"
+        >
+          <textarea type="text" name="message"></textarea>
+          <button id="submitBtn" type="submit">
+            Send
+          </button>
+        </form>
+        <section id="contact">
+          <header>
+            <h2>Or you can simply reach me via </h2>
+          </header>
+          <p>
+            Email:{" "}
+            <a href="mailto: hrychaniuk@gmail.com">hrychaniuk@gmail.com</a>
+            <br />
+            LinkedIn:{" "}
+            <a href="https://www.linkedin.com/in/anna-hrychaniuk-51b681238">
+              https://www.linkedin.com/in/anna
+            </a>
+          </p>
+        </section>
+      </div>
+      <div className="line-separator"></div>
       <footer>
         <h3>
           <a href="https://github.com/AnnaFYZ">
