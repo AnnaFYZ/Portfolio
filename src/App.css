@@ -221,3 +221,59 @@ footer {
   bottom: 0;
   background-color: var(--paper);
 }
+
+/* Existing styles */
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .homepage {
+    grid-template-columns: 100%; /* Adjust the grid layout for smaller screens */
+  }
+
+  .greetingPic {
+    width: 100%; /* Make the image take 100% of the container width */
+  }
+
+  .projects {
+    flex-direction: column; /* Stack projects vertically on smaller screens */
+  }
+
+  .projectCard {
+    width: 100%; /* Make the project card take 100% of the container width */
+  }
+
+  .bigImage {
+    width: 100%; /* Make the image take 100% of the container width */
+    height: auto; /* Maintain the aspect ratio */
+  }
+
+  .about {
+    flex-direction: column; /* Stack about content vertically on smaller screens */
+  }
+
+  .avatarPic {
+    width: 100%; /* Make the avatar take 100% of the container width */
+    max-width: 150px; /* Set a max width to prevent it from getting too large */
+  }
+
+  .contact-page {
+    flex: 1;
+  }
+
+  textarea {
+    width: 100%; /* Make the textarea take 100% of the container width */
+  }
+
+  #submitBtn {
+    width: 100%; /* Make the button take 100% of the container width */
+  }
+
+  footer {
+    width: 100%; /* Make the footer take 100% of the container width */
+  }
+}
+
+/* Additional media queries for different screen sizes if needed */
+
+/* ... */
+
