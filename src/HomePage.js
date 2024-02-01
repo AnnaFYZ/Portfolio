@@ -31,7 +31,7 @@ function HomePage() {
         </nav>
       </header>
 
-      <div id="topOfPage" className="homepage" tabIndex="0">
+      <div id="topOfPage" className="homepage scroller" tabIndex="0">
         <section id="about">
           <header>
             <h2>
@@ -86,14 +86,11 @@ function HomePage() {
         </section>
       </div>
       <div className="line-separator"></div>
-      <div id="projects">
+      <div id="projects" className="scroller">
         <Projects />
-        {/* <div className="projects">
-          <Projects />
-        </div> */}
       </div>
       <div className="line-separator"></div>
-      <div id="aboutMe" className="about">
+      <div id="aboutMe" className="about scroller">
         <section id="mePic">
           <div>
             <img
@@ -119,7 +116,7 @@ function HomePage() {
         </section>
       </div>
       <div className="line-separator"></div>
-      <div id="contacts">
+      <div id="contacts" className="scroller">
         <div className="contactHeader">
           <h2>
             You'll make me happy if you contact me even just to say 'Hello' or
