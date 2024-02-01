@@ -13,28 +13,7 @@ function Projects() {
   }, []); 
 
   return (
-    <div>
-      {/* <div className="body">
-        <header className="main-header">
-          <div></div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/contacts" className="header-link">
-                  Contacts
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="header-link">
-                  About Me
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      </div> */}
-
-      <div className="projects">
+     <div className="projects">
         {projectsData.map((project) => {
           return (
             <div className="projectCard">
@@ -54,7 +33,6 @@ function Projects() {
           );
         })}
       </div>
-    </div>
   );
 }
 

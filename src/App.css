@@ -17,21 +17,17 @@ body {
 }
 
 .body {
-  /* display: grid; */
   display: flex;
   flex-direction: column;
   margin: auto;
-  /* min-height: 100vh; */
   gap: var(--gap);
   max-width: var(--container);
 }
+
 .main-header {
   font-size: larger;
   background-color: var(--paper);
-  /* height: 90px; */
-  /* background-image: url('./photo-resized.jpg');
-  background-position: center; */
-}
+ }
 
 
 .homepage {
@@ -39,6 +35,10 @@ body {
   grid-template-columns: 50% 50%;
   grid-template-rows: auto;
   margin-top: 20px;
+}
+
+.headerH4 {
+  margin: 2em 2em 2em 0;
 }
 
 .greetingPic {
@@ -68,13 +68,8 @@ line-height: 1.5;
   margin: 15px;
 }
 
-#container {
-  display: flex;
-  justify-content: space-between;
-}
-
 form {
-  width: 100%;
+  width: clamp(280px,calc(100vw - var(--gap)*2),1360px);;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,8 +80,9 @@ form {
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 15px 30px;
-  padding: 5px 30px 0 30px;
+  /* padding: 5px 30px 0 30px; */
   width: var(--container);
+  
 }
 
 .projectCard {
@@ -194,15 +190,6 @@ nav ul {
   color: var(--brand);
 }
 
-/* Text readability */
-/* section p {
-  line-height: 1.5;
-  max-width: 55ch;
-  text-align: justify;
-  text-indent: 50px;
-  margin: 0;
-} */
-
 .line-separator {
   border-top: 5px solid var(--brand);
   margin-top: 5.7em;
@@ -212,9 +199,7 @@ nav ul {
 footer {
   position: fixed;
   display: flex;
-  align-self: end;
-  justify-self: end;
-  width: var(--container);
+  width: clamp(280px,calc(100vw - var(--gap)*2),1360px);
   justify-content: center;
   margin-top: 2em;
   border-top: 5px solid var(--brand);
@@ -222,58 +207,137 @@ footer {
   background-color: var(--paper);
 }
 
-/* Existing styles */
-
-/* Media query for smaller screens */
-@media screen and (max-width: 768px) {
-  .homepage {
-    grid-template-columns: 100%; /* Adjust the grid layout for smaller screens */
-  }
-
-  .greetingPic {
-    width: 100%; /* Make the image take 100% of the container width */
-  }
-
-  .projects {
-    flex-direction: column; /* Stack projects vertically on smaller screens */
-  }
-
-  .projectCard {
-    width: 100%; /* Make the project card take 100% of the container width */
-  }
-
-  .bigImage {
-    width: 100%; /* Make the image take 100% of the container width */
-    height: auto; /* Maintain the aspect ratio */
-  }
-
-  .about {
-    flex-direction: column; /* Stack about content vertically on smaller screens */
-  }
-
-  .avatarPic {
-    width: 100%; /* Make the avatar take 100% of the container width */
-    max-width: 150px; /* Set a max width to prevent it from getting too large */
-  }
-
-  .contact-page {
-    flex: 1;
-  }
-
-  textarea {
-    width: 100%; /* Make the textarea take 100% of the container width */
-  }
-
-  #submitBtn {
-    width: 100%; /* Make the button take 100% of the container width */
-  }
-
-  footer {
-    width: 100%; /* Make the footer take 100% of the container width */
-  }
+.footerPic {
+   width: 3vw;
+  margin: 15px;
 }
 
-/* Additional media queries for different screen sizes if needed */
+@media screen and (max-width: 768px) {
+  :root {
+    --container: calc(100% - calc(var(--gap) * 2));
+    --gap: 1.042vw;
+  }
 
-/* ... */
+  .body {
+    gap: 0;
+    max-width: 100%;
+    margin: auto 2em auto 2em;
+  }
+
+.main-header {
+  background-color: var(--paper);
+  margin-bottom: 0;
+ }
+
+.homepage {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+  margin-top: 0;
+}
+
+.headerH4 {
+  margin: 0 1em 1em 0;
+  font-size: 2.5vw;
+}
+
+.greetingPic {
+width: 100%;
+align-self: center;
+}
+
+section {
+  margin: 10px;
+  display: grid;
+}
+
+h2 {
+font-size: 3vw;
+line-height: normal;
+}
+
+#anna {
+  font-size: 3vw;
+}
+
+.logoPic {
+  width: 6vw;
+  margin: 6px;
+}
+
+.line-separator {
+  border-top: 3px solid var(--brand);
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+
+.projects {
+  flex-direction: column; 
+  padding: 0;
+  align-items: center;
+  
+}
+
+.projectCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.bigImage {
+  width: 99%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.contact-page {
+    flex: 1;
+}
+
+form {
+  width: var(--container);
+}
+
+textarea {
+    width: 80%; 
+  }
+  
+/* Site header and navigation */
+.body > header {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+nav ul {
+  font-size: medium;
+}
+
+
+.avatarPic {
+    width: 100%; 
+    max-width: 150px; 
+    margin-top: 20px;
+  }
+
+footer {
+    position: fixed;
+    display: flex;
+    width: calc(100% - 4em); 
+    justify-content: center;
+    margin: auto 2em auto 2em;
+    padding-top: 1em;
+    border-top: 3px solid var(--brand);
+    bottom: 0;
+    left: 0;
+    background-color: var(--paper);
+}
+
+.footerPic {
+   width: 6vw;
+  margin: 6px;
+}
+ 
+}
 
