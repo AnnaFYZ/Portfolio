@@ -1,7 +1,6 @@
 import {
   SiJavascript,
   SiNodedotjs,
-  SiExpress,
   SiGit,
   SiMongodb,
   SiHtml5,
