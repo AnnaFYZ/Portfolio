@@ -18,13 +18,15 @@ body {
 }
 
 .scroller {
-  scroll-margin-top: 230px;
+  padding-top: 6rem; /* Adjust based on navbar height */
+  margin-top: -6rem;
 }
 
 .body {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  padding-left: 5rem;
+  padding-right: 2rem;
   gap: var(--gap);
   max-width: var(--container);
 }
@@ -33,14 +35,6 @@ body {
   font-size: larger;
   background-color: var(--paper);
  }
-
-
-.homepage {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: auto;
-  margin-top: 20px;
-}
 
 .headerH4 {
   margin: 2em 2em 2em 0;
@@ -73,12 +67,12 @@ line-height: 1.5;
   margin: 15px;
 }
 
-form {
+/* form {
   width: clamp(280px,calc(100vw - var(--gap)*2),1360px);;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 .projects {
   display: flex;
@@ -102,14 +96,6 @@ form {
   height: 282px;
 }
 
-.about {
-  display: grid;
-  grid-template-columns: 30% 70%;
-  margin: auto;
-  align-content: center;
-  justify-content: center;
-}
-
 .text {
   display: flex;
   flex-direction: column;
@@ -117,8 +103,7 @@ form {
 }
 
 .avatarPic {
-  width: 150px;
-  border-radius: 50%;
+  margin: 1.5rem auto;
 }
 
 .contact-page {
@@ -127,7 +112,7 @@ form {
 
 .contactHeader {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 textarea {
@@ -196,20 +181,38 @@ nav ul {
 }
 
 .line-separator {
-  border-top: 5px solid var(--brand);
-  margin-top: 5.7em;
-  margin-bottom: 2em;
+  border: 0;
+  height: 15px;
+  width: 70%;
+  display: flex;  /* Enables flexbox */
+  justify-content: center; 
+  background-image: url(/public/images/divider-7617019.svg);
+  margin: 1em auto 1em auto;
+  border-radius: 10px; /* Smooth edges */
 }
 
 footer {
   position: fixed;
-  display: flex;
-  width: clamp(280px,calc(100vw - var(--gap)*2),1360px);
-  justify-content: center;
-  margin-top: 2em;
-  border-top: 5px solid var(--brand);
   bottom: 0;
+  left: 0;
+  width: 100%;
   background-color: var(--paper);
+  display: flex;
+  justify-content: center;
+  padding: 25px 10%; /* Space for the separator */
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Cover full width */
+  height: 15px; /* Match separator height */
+  background-image: url(/public/images/divider-7617019.svg);
+  background-repeat: repeat-x; /* Repeat horizontally */
+  background-position: top center;
+  background-size: 120px 100%; /* Adjust size to control repetition */
 }
 
 .footerPic {

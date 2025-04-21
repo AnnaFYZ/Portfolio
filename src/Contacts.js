@@ -1,82 +1,275 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Button } from "./HomePage";
+import {
+  Loader2
+} from "lucide-react";
+import "./styles/tailwind.css";
 
-function Contacts() {
+const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
+    setSubmitSuccess(false);
+
+    // Basic client-side validation
+    if (
+      !formData.message.trim()
+    ) {
+      setSubmitError("Please write something.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("message", formData.message);
+
+    try {
+      const response = await fetch(
+        "https://getform.io/f/63f551d4-c8ee-4512-947c-6bac09a8a707",
+        {
+          method: "POST",
+          body: formDataToSend,
+        }
+      );
+    if (response.ok) {
+      alert("Message sent successfully!");
+    } else {
+      alert("Failed to send message.");
+    } 
+      setSubmitSuccess(true);
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      setSubmitError("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <div className="body">
-      <header className="main-header">
-        <div></div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/projects" className="header-link">
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link to="/" className="header-link">
-                About Me
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-
-      <main className="contact-page">
-        <div>
-          <h1>
-            You'll make me happy if you contact me even just to give your
-            feedback
-          </h1>
-        </div>
-        <form
-          method="post"
-          action="https://getform.io/f/63f551d4-c8ee-4512-947c-6bac09a8a707"
-        >
-          <textarea type="text" name="message"></textarea>
-          <button id="submitBtn" type="submit">
-            Send
-          </button>
-        </form>
-        <section id="contact">
-          <header>
-            <h2>Or you can simply reach me via </h2>
-          </header>
-          <p>
-            Email:{" "}
-            <a href="mailto: hrychaniuk@gmail.com">hrychaniuk@gmail.com</a>
-            <br />
-            LinkedIn:{" "}
-            <a href="https://www.linkedin.com/in/anna-hrychaniuk-51b681238">
-              https://www.linkedin.com/in/anna
-            </a>
-          </p>
-        </section>
-      </main>
-      <footer>
-        <h3>
-          <a href="https://github.com/AnnaFYZ">
-            <svg
-              focusable="false"
-              role="presentation"
-              viewBox="0 0 98 96"
-              width="48"
-              height="48"
-              xmlns="http://www.w3.org/2000/svg"
+    <div className="grid md:grid-cols-2 gap-16">
+      <div
+        style={{
+          fontSize: "1.125rem",
+          lineHeight: "1.75rem",
+          color: "hsla(244, 16%, 17%, 0.95)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between", // This ensures the last p is at the bottom
+          height: "100%", // Ensures the div takes up the full height of the container
+        }}
+      >
+        <p className="text-lg leading-relaxed mb-6">
+          I'm always open to new opportunities and collaborations. Feel free to
+          reach out to me through the contact form, even if it's just to say
+          hello! 👋
+        </p>
+        <div className="flex justify-center flex-col items-center">
+          <img
+            src="./images/pero.svg"
+            alt="hand writing"
+            style={{ width: "auto", height: "150px" }}
+          />
+          <span style={{ fontSize: "10px", color: "#888", marginTop: "5px" }}>
+            Image:{" "}
+            <a
+              href="https://pixabay.com/users/gdj-1086657/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7647724"
+              style={{ color: "#888" }}
             >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
-                fill="currentColor"
-              />
-            </svg>
-            GitHub Link
-          </a>
-        </h3>
-      </footer>
+              Gordon Johnson
+            </a>{" "}
+            from{" "}
+            <a
+              href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7647724"
+              style={{ color: "#888" }}
+            >
+              Pixabay
+            </a>
+          </span>
+        </div>
+
+        <p>
+          Alternatively, you can simply reach out to me via{" "}
+          <span style={{ fontSize: "1.5rem" }}>👇</span>
+        </p>
+      </div>
+      <div>
+        <form
+          onSubmit={handleSubmit}
+          className="w-full space-y-2 max-w-3xl mx-auto"
+        >
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-white"
+              style={{
+                fontSize: "0.875rem",
+                fontWeight: "500",
+                color: "hsla(244, 16%, 17%, 0.95)",
+              }}
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-md border-gray-600 shadow-sm focus:border-primary focus:ring-primary bg-gray-800 text-white"
+              placeholder="Your Name"
+              style={{
+                marginTop: "0.25rem",
+                width: "100%",
+                borderRadius: "0.375rem",
+                border: "1px solid hsla(0, 0%, 80%, 0.8)",
+                boxShadow: "0 1px 2px rgba(0, 162, 226, 0.3)",
+                padding: "0.75rem",
+                backgroundColor: "hsla(35, 50%, 95%, 0.9)",
+                color: "hsla(0, 0%, 17%, 1)",
+                "&:focus": {
+                  outline: "none",
+                  borderColor: "hsla(200, 100%, 50%, 1)",
+                  boxShadow: "0 0 0 3px rgba(0, 162, 226, 0.3)",
+                },
+              }}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-white"
+              style={{
+                fontSize: "0.875rem",
+                fontWeight: "500",
+                color: "hsla(244, 16%, 17%, 0.95)",
+              }}
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="mt-1 block w-full rounded-md border-gray-600 shadow-sm focus:border-primary focus:ring-primary bg-gray-800 text-white"
+              placeholder="you@example.com"
+              style={{
+                marginTop: "0.25rem",
+                width: "100%",
+                borderRadius: "0.375rem",
+                border: "1px solid hsla(0, 0%, 80%, 0.8)",
+                boxShadow: "0 1px 2px rgba(0, 162, 226, 0.3)",
+                padding: "0.75rem",
+                backgroundColor: "hsla(35, 50%, 95%, 0.9)",
+                color: "hsla(0, 0%, 17%, 1)",
+                "&:focus": {
+                  outline: "none",
+                  borderColor: "hsla(200, 100%, 50%, 1)",
+                  boxShadow: "0 0 0 3px rgba(0, 162, 226, 0.3)",
+                },
+              }}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-white"
+              style={{
+                fontSize: "0.875rem",
+                fontWeight: "500",
+                color: "hsla(244, 16%, 17%, 0.95)",
+              }}
+            >
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows="4"
+              className="mt-1 block w-full rounded-md border-gray-600 shadow-sm focus:border-primary focus:ring-primary bg-gray-800 text-white"
+              placeholder="Your message..."
+              style={{
+                marginTop: "0.25rem",
+                width: "100%",
+                borderRadius: "0.375rem",
+                border: "1px solid hsla(0, 0%, 80%, 0.8)",
+                boxShadow: "0 1px 2px rgba(0, 162, 226, 0.3)",
+                padding: "0.75rem",
+                backgroundColor: "hsla(35, 50%, 95%, 0.9)",
+                color: "hsla(0, 0%, 17%, 1)",
+                "&:focus": {
+                  outline: "none",
+                  borderColor: "hsla(200, 100%, 50%, 1)",
+                  boxShadow: "0 0 0 3px rgba(0, 162, 226, 0.3)",
+                },
+                resize: "vertical",
+              }}
+            ></textarea>
+          </div>
+          <Button
+            type="submit"
+            onClick={handleSubmit}
+            variant="primary"
+            disabled={isSubmitting}
+            className="w-full ml-auto"
+            style={{ width: "100%" }}
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2
+                  className="animate-spin w-5 h-5 mr-2"
+                  style={{
+                    height: "1.25rem",
+                    width: "1.25rem",
+                    marginRight: "0.5rem",
+                  }}
+                />
+                Sending...
+              </>
+            ) : (
+              "Send Message"
+            )}
+          </Button>
+          {submitError && (
+            <p
+              className="text-red-500 text-sm"
+              style={{ color: "#dc2626", fontSize: "0.875rem" }}
+            >
+              {submitError}
+            </p>
+          )}
+          {submitSuccess && (
+            <p
+              className="text-green-500 text-sm"
+              style={{ color: "#16a34a", fontSize: "0.875rem" }}
+            >
+              Message sent successfully!
+            </p>
+          )}
+        </form>
+      </div>
     </div>
   );
-}
+};
 
-export default Contacts;
+export default ContactSection;
