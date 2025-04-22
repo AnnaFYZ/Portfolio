@@ -2,51 +2,54 @@
   {
     "id": 0,
     "h3": "Plants webshop",
-    "img": [{
-      "src": "/images/kaktus1.png",
-      "alt": "image with cactuses"
-    }, {
-      "src": "/images/kaktus2.png",
-      "alt": "image with cactuses"
-    }, {
-      "src": "/images/kaktus3.png",
-      "alt": "image with cactuses"
-    }],
-    "summary": "This project became a real CSS challenge for me and taught a lot, especially about background pictures",
+    "mediaType": "carousel",
+    "img": [
+      {
+        "src": "/images/kaktus1.png",
+        "alt": "image with cactuses"
+      },
+      {
+        "src": "/images/kaktus2.png",
+        "alt": "image with cactuses"
+      },
+      {
+        "src": "/images/kaktus3.png",
+        "alt": "image with cactuses"
+      }
+    ],
+    "summary": "This project was a hands-on CSS challenge that helped me deeply understand layout techniques and responsive background images. Built with HTML and CSS, it strengthened my styling skills and attention to visual detail.",
     "link": "https://annafyz-kaktus-shop.netlify.app/",
     "gitlink": "https://github.com/AnnaFYZ/HTML-CSS-Coursework-Week4.git"
   },
   {
     "id": 1,
     "h3": "TV-Show-project",
-    "img": [{
-      "src": "/images/video1.png",
-      "alt": "movies list"
-    }, {
-      "src": "/images/video2.png",
-      "alt": "episodes list"
-    }, {
-      "src": "/images/video3.png",
-      "alt": "selected episode"
-    }],
-    "summary": "This project was made with vanilla JavaScript but using API from TV-Maze project and asynchronous functions",
+    "mediaType": "video",
+    "videoSrc": "./images/tv-maze.mp4",
+    "img": [
+      {
+        "src": "/images/video1.png",
+        "alt": "movies list"
+      },
+      {
+        "src": "/images/video2.png",
+        "alt": "episodes list"
+      },
+      {
+        "src": "/images/video3.png",
+        "alt": "selected episode"
+      }
+    ],
+    "summary": "A vanilla JavaScript project that integrates the TV-Maze API to fetch and display show data. It was a great opportunity to work with asynchronous functions, API calls, and dynamic DOM manipulation — all without using any frameworks.",
     "link": "https://cyf-annafyz-tv.netlify.app/",
     "gitlink": "https://github.com/AnnaFYZ/-tv-show-dom-project"
   },
   {
     "id": 2,
     "h3": "ClassPlanner",
-    "img": [{
-      "src": "./images/planner1.png",
-      "alt": "home page"
-    }, {
-      "src": "./images/planner2.png",
-      "alt": "log in with slack page"
-    }, {
-      "src": "./images/planner3.png",
-      "alt": "google calendar"
-    }],
-    "summary": "This is team made project, which proves my ability to work in a team",
+    "mediaType": "video",
+    "videoSrc": "./images/class-planner.mp4",
+    "summary": "A collaborative full-stack application built with React on the frontend and Node.js with PostgreSQL on the backend. It features Slack authentication and Google Calendar integration, allowing users to coordinate events and communication efficiently. This project demonstrates my ability to work in a team, implement third-party services, and manage both client and server logic effectively.",
     "link": "https://classplanner.vercel.app/",
     "gitlink": "https://github.com/This-team-CFY/classplanner"
   }
