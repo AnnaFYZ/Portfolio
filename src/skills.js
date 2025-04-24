@@ -30,11 +30,11 @@ const skills = [
 
 const SkillsBubbles = () => {
   return (
-    <div className="flex flex-wrap justify-center gap-6 my-8">
+    <div className="flex flex-wrap justify-center gap-6 my-8 bubble-container">
       {skills.map((skill, index) => (
         <div
           key={index}
-          className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-lg border-4 border-primary bg-backgroundColor hover:scale-110 transition-transform"
+          className="bubble w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-lg border-4 border-primary bg-backgroundColor hover:scale-110 transition-transform"
           title={skill.name}
           style={{
             backgroundColor: "var(--paper)",
@@ -45,12 +45,12 @@ const SkillsBubbles = () => {
             <img
               src={skill.image}
               alt={skill.name}
-              className="w-[3.5rem] h-[3.5rem] object-contain"
+              className="bubble-img w-[3.5rem] h-[3.5rem] object-contain"
             />
           ) : (
              <div className="flex flex-col items-center">
-              <div className="text-4xl md:text-5xl">{skill.icon}</div>
-              <div className="text-sm mt-1 text-[var(--ink)]">{skill.name}</div>
+              <div className="bubble-img text-4xl md:text-5xl">{skill.icon}</div>
+              <div className="bubble-text text-sm mt-1 text-[var(--ink)]">{skill.name}</div>
             </div>
           )}
         </div>

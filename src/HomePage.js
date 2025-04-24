@@ -74,9 +74,10 @@ export const Button = ({
   );
 };
 
-const AnimatedHeading = ({ children }) => {
+const AnimatedHeading = ({ children, ...props }) => {
   return (
     <motion.h2
+      className="motion-heading"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -86,6 +87,7 @@ const AnimatedHeading = ({ children }) => {
         color: "hsla(244, 16%, 17%, 0.95)",
         marginBottom: "0.5rem",
       }}
+      {...props}
     >
       {children}
     </motion.h2>
@@ -126,7 +128,7 @@ const Navbar = () => {
     { label: "About", href: "#aboutMe" },
     { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
+    { label: "Contacts", href: "#contacts" },
   ];
 
   return (
@@ -268,19 +270,7 @@ export const HeroSection = () => {
             autoPlay
             muted
             playsInline
-            className="w-full h-full object-cover"
-            style={{
-              width: "20rem",
-              height: "30rem",
-              borderWidth: "1rem",
-              borderStyle: "solid",
-              borderColor: "transparent",
-              boxSizing: "border-box",
-              display: "block",
-              padding: "1rem",
-              borderRadius: "1rem",
-              boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.3)",
-            }}
+            className="w-full h-full object-cover waiving-video"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           />
@@ -314,20 +304,20 @@ export const HeroSection = () => {
             />
           </div>
         ) : (
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12 px-4 sm:px-8 lg:px-16">
-            <div className="flex-0.5" />
-            <div className="text-center md:text-left max-w-xl">
-              <AnimatedHeading>
+          <div className="grid grid-cols-2 md:flex md:flex-row items-center justify-between gap-2 px-4 sm:px-8 lg:px-16">
+            <div className="hidden md:block flex-0.5" />
+            <div className="text-center md:text-left max-w-[150px] sm:max-w-sm md:max-w-xl">
+              <AnimatedHeading id="hero-section-heading">
                 Hello, I'm{" "}
                 <span
-                  className="text-5xl sm:text-6xl md:text-7xl"
+                  className="text-3xl sm:text-6xl md:text-7xl"
                   style={{ color: "#00a2e2" }}
                 >
                   Anna
                 </span>
               </AnimatedHeading>
               <motion.p
-                className="text-gray-300 text-lg sm:text-xl mb-12 text-left"
+                className="hero-section-p text-gray-300 text-lg sm:text-xl mb-12 text-left"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeInOut", delay: 0.3 }}
@@ -353,7 +343,7 @@ export const HeroSection = () => {
               >
                 <Button
                   variant="primary"
-                  className="px-8 py-3 rounded-full flex items-center gap-2 text-primary border-primary hover:bg-primary hover:text-white transition-all duration-300"
+                  className="hero-section-button px-8 py-3 rounded-full flex items-center gap-2 text-primary border-primary hover:bg-primary hover:text-white transition-all duration-300"
                   onClick={() => {
                     const section = document.getElementById("projects");
                     if (section) {
@@ -367,7 +357,7 @@ export const HeroSection = () => {
               </motion.div>
             </div>
             <div className="mt-8 md:mt-0">
-              <WaveVideo />
+              <WaveVideo className="w-[200px] md:w-auto mx-auto" controls />
             </div>
           </div>
         )}
@@ -396,15 +386,15 @@ function HomePage() {
         }}
       >
         <AnimatedHeading>About Me</AnimatedHeading>
-        <div className="grid md:grid-cols-[1fr_2fr] gap-16">
-          <div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_2fr] w-full px-4 max-w-full box-border">
+          <div className="w-full max-w-full break-words">
             <img
               className="avatarPic"
               src="./images/edit.png"
               alt="pic of me"
             />
           </div>
-          <div>
+          <div className="w-full max-w-full break-words">
             <p style={{ marginBottom: "10px" }}>
               As a passionate software developer, I believe technology should
               serve a purpose and make life easier for people. My journey into
