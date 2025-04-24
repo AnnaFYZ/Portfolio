@@ -134,7 +134,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+        className="fixed top-0 left-0 w-[100vw] z-50 transition-all duration-300"
         style={{
           backgroundColor: "hsla(120, 81%, 88%, 0.9)",
           backdropFilter: isScrolled ? "blur(10px)" : "none",
