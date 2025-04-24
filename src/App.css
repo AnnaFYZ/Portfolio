@@ -41,7 +41,7 @@ body {
               display: block;
               padding: 1rem;
               border-radius: 1rem;
-              box-shadow: "0px 10px 30px rgba(0, 0, 0, 0.3)";
+              box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 section {
@@ -160,15 +160,16 @@ footer::before {
 
 @media screen and (max-width: 768px) {
   :root {
-    --container: calc(100% - calc(var(--gap) * 2));
     --gap: 1.042vw;
+    --container: calc(100% - calc(var(--gap) * 2));
   }
 
   .body {
     gap: 0;
-    max-width: 100%;
+    max-width: 100% !important;
     margin: auto 2em auto 2em;
-    padding-left: 0em;
+    padding-left: 1em;
+    padding-right: 0;
   }
 
 section {
@@ -189,14 +190,14 @@ line-height: normal;
 .waiving-video {
   width: 10rem;
   height: 15rem;
-              border-width: 0.5rem;
+              border-width: 0.2rem;
               border-style: solid;
               border-color: transparent;
               box-sizing: border-box;
               display: block;
               padding: 0.5rem;
               border-radius: 1rem;
-              box-shadow: "0px 10px 30px rgba(0, 0, 0, 0.3)";
+              box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .hero-section-button {
