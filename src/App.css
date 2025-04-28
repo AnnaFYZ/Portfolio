@@ -29,6 +29,7 @@ body {
   padding-right: 2rem;
   gap: var(--gap);
   max-width: var(--container);
+  overflow: hidden;
 }
 
 .waiving-video {
